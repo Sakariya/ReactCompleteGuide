@@ -4,14 +4,37 @@ import classes from './App.css';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
-  state = {
-    persons: [
-      {id: 1,name: 'Pooja', age: 25},
-      {id: 2,name: 'Brinju', age: 23},
-      {id: 3,name: 'Ashish', age: 18}
-    ],
-    otherState: "some valuee......",
-    showPerson: false
+  constructor(props){
+    super(props);
+    console.log("[App.js] Inside constructor", props);
+    this.state = {
+      persons: [
+        {id: 1,name: 'Pooja', age: 25},
+        {id: 2,name: 'Brinju', age: 23},
+        {id: 3,name: 'Ashish', age: 18}
+      ],
+      otherState: "some valuee......",
+      showPerson: false
+    }
+  }
+
+  // This is good way and it's supports on react 16+ versions
+  // state = {
+  //   persons: [
+  //     {id: 1,name: 'Pooja', age: 25},
+  //     {id: 2,name: 'Brinju', age: 23},
+  //     {id: 3,name: 'Ashish', age: 18}
+  //   ],
+  //   otherState: "some valuee......",
+  //   showPerson: false
+  // }
+
+  componentWillMount() {
+    console.log("[App.js] Inside componentWillMount()");    
+  }
+
+  componentDidMount() {
+    console.log("[App.js] Inside componentDidMount()");    
   }
 
   nameChangedHandler = (event, id) => {
@@ -41,6 +64,7 @@ class App extends Component {
   }
 
   render() {
+    console.log("[App.js] Inside render()"); 
     let persons = null;
     if (this.state.showPerson) {
       persons =  <Persons
