@@ -62,15 +62,8 @@ class App extends Component {
   }
 
   render() {
-    const style = {
-      backgroundColor: 'green',
-      color: 'white',
-      border: '1px solid blue',
-      padding: '8px',
-      cursor: 'pointer'
-    }
-
     let persons = null;
+    let btnClass = '';
     if (this.state.showPerson) {
       persons = (
         <div>
@@ -98,7 +91,7 @@ class App extends Component {
         </div>
       );
       // change background color on click of button...
-      style.backgroundColor = 'red';
+      btnClass = classes.Red;
     }
 
     // let classes = ['red', 'bold'].join(' '); ORR
@@ -116,7 +109,7 @@ class App extends Component {
           <p className={assignedClasses.join(' ')}>This is really working...</p>
           {/* <button onClick={this.switchNameHandler}>Switch Name</button> */}
           {/* <button style={style} onClick={() => this.switchNameHandler('Poojiii')}>Switch Name</button> */}
-          <button style={style} onClick={this.togglePersonHandler}>Toggle Person</button>
+          <button className={btnClass} onClick={this.togglePersonHandler}>Toggle Person</button>
           {/* <Person name="Pooja" age="24"/> */}
           {/* <Person name="Brinju" age="25" > TRETSTES</Person>
           <Person name="Ashish" age="27"/> */}
