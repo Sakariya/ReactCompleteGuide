@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Person from './Person/Person';
-import Redium, { StyleRoot } from 'radium';
-import './App.css';
+import classes from './App.css';
 
 
 class App extends Component {
@@ -68,11 +67,7 @@ class App extends Component {
       color: 'white',
       border: '1px solid blue',
       padding: '8px',
-      cursor: 'pointer',
-      ':hover': {
-        backgroundColor: 'lightgreen',
-        color: 'black',
-      }
+      cursor: 'pointer'
     }
 
     let persons = null;
@@ -103,27 +98,22 @@ class App extends Component {
         </div>
       );
       // change background color on click of button...
-      style.backgroundColor = 'red'
-      style[':hover'] = {
-        backgroundColor: 'salmon',
-        color: 'black'
-      }
+      style.backgroundColor = 'red';
     }
 
     // let classes = ['red', 'bold'].join(' '); ORR
-    const classes = [];
+    const assignedClasses = [];
     if(this.state.persons.length <= 2) {
-      classes.push('red');
+      assignedClasses.push(classes.red);
     }
     if(this.state.persons.length <= 1) {
-      classes.push('bold');
+      assignedClasses.push(classes.bold);
     }
 
     return (
-      <StyleRoot>
-        <div className="App">
+        <div className={classes.App}>
           <h1>Hi, I'm a React App..!!!</h1>
-          <p className={classes.join(' ')}>This is really working...</p>
+          <p className={assignedClasses.join(' ')}>This is really working...</p>
           {/* <button onClick={this.switchNameHandler}>Switch Name</button> */}
           {/* <button style={style} onClick={() => this.switchNameHandler('Poojiii')}>Switch Name</button> */}
           <button style={style} onClick={this.togglePersonHandler}>Toggle Person</button>
@@ -159,10 +149,9 @@ class App extends Component {
           {/* -----OR------ */}
           {persons}
         </div>
-      </StyleRoot>
     );
     // return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, I\'m a react app'));
   }
 }
 
-export default Redium(App);
+export default App;
